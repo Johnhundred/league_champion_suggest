@@ -29,7 +29,7 @@ class GetSummonerMatchesTest extends TestCase
         $mockedMatchOverview->timestamp = time();
         $mockedMatchOverviews = Mockery::mock(MatchOverviews::class);
         $mockedMatchOverviews->data = collect([$mockedMatchOverview]);
-        // Mock API client to not make a real request a
+        // Mock API client to not make a real request
         $this->instance(RiotAPIClientInterface::class, Mockery::mock(Client::class, function ($mock) use ($mockedMatchOverviews) {
             $mock->shouldReceive('getSummonerMatches')->once()->with(GetSummonerMatchesRequest::class)->andReturn($mockedMatchOverviews);
         }));
